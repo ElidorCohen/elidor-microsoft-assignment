@@ -99,12 +99,12 @@ To run this project, you need a **Kubernetes cluster**. The cluster can be set u
 2. **Azure CLI**: You can use the CLI method for an automated setup.
 
 ### **Creating an AKS Cluster Using Azure CLI**
-Run the following command to create an **AKS cluster with Azure CNI, Calico for network policies, and RBAC enabled**:
+Run the following command to create an **AKS cluster with Azure CNI and RBAC enabled**:
 
 ```sh
 az aks create --resource-group MyResourceGroup --name MyAKSCluster \
     --node-count 2 --network-plugin azure --network-policy calico \
-    --enable-managed-identity --enable-rbac --generate-ssh-keys
+    --enable-managed-identity --enable-azure-rbac --generate-ssh-keys
 ```
 
 ### **Configure `kubectl` to Use the Cluster**
@@ -122,6 +122,26 @@ kubectl get nodes
 ```
 
 If the output shows your cluster nodes, then you are ready to proceed.
+
+#### **Assigning Roles to Users**
+Once the cluster is created, you can assign roles using either **Azure CLI** or the **Azure Portal**:
+
+#### **Using Azure CLI**
+```sh
+az role assignment create --role "Azure Kubernetes Service RBAC Admin" --assignee <AAD-ENTITY-ID> --scope $AKS_ID
+```
+can be a username or the client ID of a service principal.
+
+#### **Using Azure Portal**
+1. Navigate to your **AKS cluster** in the **Azure portal**.
+2. Go to **Access Control (IAM)** > **Add role assignment**.
+3. Select the desired role (e.g., **Azure Kubernetes Service RBAC Admin/Reader**).
+4. Under **Members**, assign access to a **user, group, or service principal**.
+5. Click **Review + Assign** to complete the process.
+
+### **Project-Specific Role Assignments**
+In this project, **RBAC roles were created and assigned to test users** using **Microsoft Entra ID (formerly Azure AD) and IAM** to control access securely.
+
 
 ---
 
