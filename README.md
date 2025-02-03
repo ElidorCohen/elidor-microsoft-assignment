@@ -10,7 +10,6 @@
 - [Configuring Secrets (CoinMarketCap API Key)](#configuring-secrets-coinmarketcap-api-key)
 - [Testing the Deployment](#testing-the-deployment)
 - [Troubleshooting](#troubleshooting)
-- [Cleanup](#cleanup)
 
 ---
 
@@ -33,7 +32,6 @@ These URLs are routed through the **NGINX Ingress Controller** and demonstrate t
 - **kubectl Installation Guide:** **[kubectl](https://kubernetes.io/docs/tasks/tools/)**
 
 ### **Project Structure**
-<!-- Replace the placeholder below with your project structure -->
 ```
 /task
 │── /aks-deployment
@@ -66,14 +64,13 @@ These URLs are routed through the **NGINX Ingress Controller** and demonstrate t
 ---
 
 ## **Microsoft Architecture**
-This project follows **Microsoft's best practices** for a **production-ready microservices architecture**:
-- **Each service runs on a separate Kubernetes pod** with **2** for scalability.
+
+- **Each service runs on a separate Kubernetes pod** with **2** replicas for scalability.
 - **An NGINX Ingress Controller** handles external requests and routes traffic accordingly.
 - **Network Policies are enforced**, ensuring that **Service A cannot communicate with Service B**.
 - **Kubernetes Secrets are used** to securely inject API keys.
 
 ### **Architecture Diagram**
-<!-- Replace with your architecture diagram -->
 
 ![Architecture Diagram](https://i.ibb.co/ZvF6Stg/drawio-1.png)
 
@@ -254,5 +251,6 @@ kubectl describe networkpolicy deny-service-a-to-service-b
 kubectl rollout restart deployment service-a
 kubectl rollout restart deployment service-b
 ```
+If you modified the yaml files you must re-apply them using the apply -f command as shown above.
 
 
