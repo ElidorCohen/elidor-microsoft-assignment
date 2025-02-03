@@ -139,7 +139,7 @@ can be a username or the client ID of a service principal.
 4. Under **Members**, assign access to a **user, group, or service principal**.
 5. Click **Review + Assign** to complete the process.
 
-### **Project-Specific Role Assignments**
+#### **Project-Specific Role Assignments**
 In this project, **RBAC roles were created and assigned to test users** using **Microsoft Entra ID (formerly Azure AD) and IAM** to control access securely.
 
 
