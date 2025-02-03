@@ -1,0 +1,15 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "managedClusters_AKS1_FlaskApp_name": {
+            "value": null
+        },
+        "publicIPAddresses_a986d93a_8de6_4582_8c93_88ae290dc0a8_externalid": {
+            "value": null
+        },
+        "userAssignedIdentities_AKS1_FlaskApp_agentpool_externalid": {
+            "value": null
+        }
+    }
+}
